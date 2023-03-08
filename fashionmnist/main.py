@@ -22,5 +22,7 @@ model.fit(train_images, train_labels, epochs=5)
 model.evaluate(test_images, test_labels)
 
 predictions = model.predict(test_images)
+print(test_labels[0])
+print(predictions[0])
 print(np.argmax(predictions[0]))
 

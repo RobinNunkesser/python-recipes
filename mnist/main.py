@@ -1,6 +1,7 @@
 import tensorflow as tf
+import numpy as np
 #from keras.utils import plot_model
-import datetime
+#import datetime
 #import coremltools
 
 mnist = tf.keras.datasets.mnist
@@ -21,12 +22,17 @@ model.compile(optimizer='adam',
               loss='sparse_categorical_crossentropy',
               metrics=['accuracy'])
 
-log_dir="logs/fit/" + datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
-tensorboard_callback = tf.keras.callbacks.TensorBoard(log_dir=log_dir, histogram_freq=1)
+#log_dir="logs/fit/" + datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
+#tensorboard_callback = tf.keras.callbacks.TensorBoard(log_dir=log_dir, histogram_freq=1)
 
-model.fit(x_train, y_train, epochs=5,callbacks=[tensorboard_callback])
+model.fit(x_train, y_train, epochs=5)#,callbacks=[tensorboard_callback])
 
 model.evaluate(x_test, y_test)
+
+predictions = model.predict(x_test)
+print(y_test[0])
+print(predictions[0])
+print(np.argmax(predictions[0]))
 
 # Save the model in HDF5 format.
 #keras_file = "keras_model.h5"
