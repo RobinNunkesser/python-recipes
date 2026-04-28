@@ -1,3 +1,5 @@
+import time
+
 calls = 0
 
 def	fib(n):
@@ -22,9 +24,15 @@ def	fib_efficient(n, d):
 
 calls = 0
 d = {1:1, 2:2}
+t0 = time.time()
 print(fib_efficient(34, d))
 print(calls)
+t1 = time.time() - t0
+print("t =", t0, ":", t1, "s,")
 
 calls = 0
+t0 = time.time()
 print(fib(34))
 print(calls)
+t1 = time.time() - t0
+print("t =", t0, ":", t1, "s,")

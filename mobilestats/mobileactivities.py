@@ -2,44 +2,39 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-subs = [(1993, 34),
-        (1994, 56),
-        (1995, 91),
-        (1996, 145),
-        (1997, 215),
-        (1998, 318),
-        (1999, 492),
-        (2000, 740),
-        (2001, 962),
-        (2002, 1159),
-        (2003, 1418),
-        (2004, 1765),
-        (2005, 2205),
-        (2006, 2745),
-        (2007, 3368),
-        (2008, 4030),
-        (2009, 4640),
-        (2010, 5290),
-        (2011, 5890),
-        (2012, 6261),
-        (2013, 6662),
-        (2014, 6996),
-        (2015, 7132),
-        (2016, 7452),
-        (2017, 7697),
-        (2018, 7915),
-        (2019, 8214),
-        (2020, 8268),
-        (2021, 8489),
-        (2022, 8617),
-        (2023, 8891)
-        ]
+activities = [('Chatting or sending messages', 74.70),
+              ('E-mailing', 70.95),
+              ('Online banking', 62.90),
+              ('Listening to music', 61.70),
+              ('Watching videos', 61.10),
+              ('Searching for products', 56.70),
+              ('Buying products', 56.60),
+              ('Uploading videos or photos', 54.55),
+              ('Reading news pages', 52.30),
+              ('Making internet calls', 47.45),
+              ('Using online map / navigation services', 46.70),
+              ('Watching movies / series', 44.85),
+              ('Comparing prices', 43.30),
+              ('Video gaming / online gaming', 39.05),
+              ('Visiting special deal pages', 37.90),
+              ('Reading blogs', 27.60),
+              ('Visiting traveling pages', 26.40),
+              ('Listening to internet radio', 26.35),
+              ('Watching live TV', 25.90),
+              ('Listening to podcasts', 25.60),
+              ('Job search', 24.40),
+              ('Writing comments in forums', 23),
+              ('Selling products', 21.40),
+              ('Writing customer reviews', 21),
+              ('None of the above', 1.05),
+              ('No answer', 0.30)
+              ]
 
-subsdf = pd.DataFrame(subs, columns=['Jahr', 'Mobilfunkanschlüsse (in Millionen)'])
+activitiesdf = pd.DataFrame(activities, columns=['Aktivität', 'Prozentwert'])
 plt.style.use('dark_background')
-plot = sns.barplot(subsdf, x="Jahr", hue="Jahr", legend=False, y="Mobilfunkanschlüsse (in Millionen)")
-# ylabels = ['{:,.2f}'.format(y) + 'K' for y in plot.get_yticks() / 1000]
-# plot.set_yticklabels(ylabels)
-plt.xticks(rotation=45)
+plot = sns.barplot(activitiesdf, x="Prozentwert", hue="Prozentwert", legend=False, y="Aktivität", orient="h")
+# xlabels = ['{:.0%}'.format(x) for x in plot.get_xticks()]
+# plot.set_xticklabels(xlabels)
+# plt.xticks(rotation=45)
 plt.tight_layout()
-plt.savefig("/Users/nunkesser/repos/work/images/hsd/black/mobilesubscriptions.svg")
+plt.savefig("/Users/nunkesser/repos/work/images/hsd/black/mobileactivities.svg")
